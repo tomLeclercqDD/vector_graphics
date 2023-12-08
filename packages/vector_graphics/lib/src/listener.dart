@@ -770,7 +770,10 @@ class FlutterVectorGraphicsListener extends VectorGraphicsCodecListener {
   @override
   void onDrawImage(int imageId, double x, double y, double width, double height,
       Float64List? transform) {
-    final Image image = _images[imageId]!;
+    final Image? image = _images[imageId];
+    if (image == null) {
+      return;
+    }
     if (transform != null) {
       _canvas.save();
       _canvas.transform(transform);
