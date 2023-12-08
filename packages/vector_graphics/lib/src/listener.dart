@@ -772,7 +772,7 @@ class FlutterVectorGraphicsListener extends VectorGraphicsCodecListener {
       Float64List? transform) {
     final Image? image = _images[imageId];
     if (image == null) {
-      return;
+      throw Exception('missing imageId:$imageId');
     }
     if (transform != null) {
       _canvas.save();

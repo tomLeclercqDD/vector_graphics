@@ -215,7 +215,11 @@ class VectorGraphicsCodec {
           _readImageConfig(buffer, listener);
           continue;
         case _drawImageTag:
-          _readDrawImage(buffer, listener);
+          try {
+            _readDrawImage(buffer, listener);
+          } catch (e) {
+            //Skips error, image is null
+          }
           continue;
         case _patternTag:
           _readPattern(buffer, listener);
